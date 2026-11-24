@@ -1,37 +1,97 @@
-# FoodBridge (Firebase edition)
+# 🍲 FoodBridge – Connecting Surplus Food with People in Need
 
-Real accounts + shared real-time data using Firebase Auth and Cloud Firestore (free Spark plan is enough).
+**FoodBridge** is a web-based food donation platform designed to reduce food wastage by connecting food donors, NGOs, and volunteers.
 
-## 1. Create the Firebase project
-1. https://console.firebase.google.com → **Add project**.
-2. **Build → Authentication → Get started →** enable **Email/Password**.
-3. **Build → Firestore Database → Create database** (production mode, pick a region e.g. `asia-south1`).
-4. **Project settings → Your apps → Web (</>)** → register app → copy the `firebaseConfig` values into `firebase-config.js`.
-5. **Firestore → Rules** → paste the contents of `firestore.rules` → **Publish**.
+The platform allows restaurants, hotels, pg, hostel and other food donors to share surplus food with NGOs, who can claim donations and coordinate their delivery with volunteers.
 
-## 2. Run it
-ES modules and Firebase Auth do not work from `file://`. Use any local server:
+Our goal is simple: **Zero Food Waste, Zero Hunger.**
 
-    npx serve .            # or:  python3 -m http.server 8000
+## 🌟 Key Features
 
-then open http://localhost:3000 (or :8000). `localhost` is authorised in Firebase by default.
+- **User Authentication:** Secure registration and login using Firebase Authentication.
+- **Multiple User Roles:** Separate dashboards for Donors, NGOs, Volunteers, and Admins.
+- **Food Donations:** Donors can post details about available surplus food.
+- **Donation Discovery:** NGOs can browse available food donations.
+- **Food Claiming:** NGOs can claim available donations.
+- **Volunteer Coordination:** Volunteers can participate in food delivery.
+- **Admin Dashboard:** Administrators can manage users and donations.
+- **User Verification:** Admins can verify registered users.
+- **Location Support:** Location-based information to help connect donors and recipients.
 
-## 3. Create the first admin
-1. Register a normal account on the site (any role).
-2. Firebase Console → Firestore → `users` → open that user's document.
-3. Change `role` to `admin` and `verified` to `true`. Log in again.
-4. The admin can now verify donors, NGOs and volunteers from the dashboard.
+## 🛠️ Technologies Used
 
-## 4. Put it online
-    npm i -g firebase-tools
-    firebase login
-    firebase init        # choose Hosting + Firestore, use existing project, keep firebase.json / firestore.rules
-    firebase deploy
+| Technology | Purpose |
+|---|---|
+| HTML5 | Website structure |
+| CSS3 | Styling and responsive interface |
+| JavaScript | Frontend functionality |
+| Firebase Authentication | User authentication |
+| Cloud Firestore | Database management |
+| Leaflet.js | Interactive maps and location support |
 
-Your site will be live at https://YOUR_PROJECT.web.app
+## 👥 User Roles
 
-## Notes / known limits
-- "Remove" on a user deletes only their profile (Firestore). Deleting the login itself needs the Firebase console or an admin backend (Cloud Function).
-- Verified users can see other verified users' phone/address (needed for pickups). Unverified users see nothing.
-- Volunteer live GPS writes to Firestore every ~3 s per active delivery — fine for free tier at small scale.
-- Next steps: phone OTP login, push/WhatsApp alerts (Cloud Functions + FCM), handover OTP, photo upload (Firebase Storage).
+1. **Food Donor:** Posts details of surplus food available for donation.
+2. **NGO:** Discovers and claims available food donations.
+3. **Volunteer:** Helps coordinate food pickup and delivery.
+4. **Admin:** Manages users, verifies accounts, and oversees donations.
+
+## ⚙️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ishvi20/FoodBridge.git
+```
+
+### 2. Open the Project
+
+```bash
+cd FoodBridge
+```
+
+### 3. Configure Firebase
+
+- Create a Firebase project.
+- Register a Web App in Firebase.
+- Enable Email/Password Authentication.
+- Create a Cloud Firestore database.
+- Configure your Firebase web credentials in `firebase-config.js`.
+- Deploy the Firestore security rules from `firestore.rules`.
+
+### 4. Run the Application
+
+Open the project using VS Code and launch `index.html` with the Live Server extension.
+
+## 📁 Project Structure
+
+```text
+FoodBridge/
+│
+├── index.html
+├── style.css
+├── script.js
+├── firebase-config.js
+├── firebase.json
+├── firestore.rules
+├── README.md
+└── .gitignore
+```
+
+## 🎯 Project Objective
+
+FoodBridge aims to create a simple and accessible digital platform that reduces food wastage and makes surplus food available to people who need it.
+
+By connecting donors, NGOs, and volunteers, the platform encourages responsible food distribution and community participation.
+
+## 👩‍💻 Developer
+
+**Ishvi Goyal**
+
+GitHub: [@ishvi20](https://github.com/ishvi20)
+
+---
+
+**FoodBridge – Bridging Surplus Food and Hungry Stomachs.**
+
+*Zero Waste. Zero Hunger.* 🍲
